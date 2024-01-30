@@ -1,11 +1,12 @@
 type Query {
   players: [Player!]!
+  player(id: ID!): Player!
 }
 
 type Player {
-  ID_player: ID!
+  ID_player: Int!
   first_name: String!
   last_name: String!
   number: Int!
-  ID_team: ID!
+  ID_team: Int!
 }

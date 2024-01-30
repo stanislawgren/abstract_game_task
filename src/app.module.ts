@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { PlayerModule } from './player/player.module';
 import { GameModule } from './game/game.module';
+import { DataloaderModule } from './dataloader/dataloader.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { GameModule } from './game/game.module';
     TeamModule,
     PlayerModule,
     GameModule,
+    DataloaderModule,
   ],
 })
 export class AppModule {}

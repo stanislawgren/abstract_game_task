@@ -1,0 +1,12 @@
+scalar Date
+
+type Query {
+  games: [Game!]!
+}
+
+type Game {
+    ID_game: Int!
+    date: Date!
+    location: String!
+    time: String!
+}

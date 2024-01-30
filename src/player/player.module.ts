@@ -7,5 +7,6 @@ import { Players } from './player.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Players])],
   providers: [PlayerResolver, PlayerService],
+  exports: [PlayerService],
 })
 export class PlayerModule {}
