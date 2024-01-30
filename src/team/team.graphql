@@ -1,8 +1,10 @@
 type Query {
   teams: [Team!]!
+  team(id: ID!): Team!
 }
 
 type Team {
-  ID_team: ID!
+  ID_team: Int!
   name: String!
+  players: [Player]
 }
