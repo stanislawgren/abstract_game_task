@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Teams } from './team.entity';
 import { Team } from 'src/graphql';
 
@@ -16,5 +16,13 @@ export class TeamService {
 
   async findOneById(id: number): Promise<Team> {
     return await this.teamRepository.findOne({ where: { ID_team: id } });
+  }
+
+  async findManyById(ids: number[]): Promise<(Team | any)[]> {
+    const teams = await this.teamRepository.find({
+      where: { ID_team: In(ids) },
+    });
+
+    return await teams;
   }
 }
