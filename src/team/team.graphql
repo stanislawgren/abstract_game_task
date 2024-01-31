@@ -1,0 +1,21 @@
+type Query {
+  teams: [TeamPlayers!]!
+  team(id: ID!): TeamPlayers!
+}
+
+type TeamPlayers {
+  ID_team: Int!
+  name: String!
+  players: [Player]
+}
+
+type TeamGame {
+  ID_team: Int!
+  name: String!
+  players: [GamePlayer!]!
+}
+
+type Team {
+  ID_team: Int!
+  name: String!
+}

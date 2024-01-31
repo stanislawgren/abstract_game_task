@@ -1,0 +1,56 @@
+scalar Date
+
+type Query {
+  games: [Game!]!
+  game_participants: [GameParticipant!]!
+  game_players: [GamePlayer!]!
+  game(id: ID!): Game!
+}
+
+type Game {
+  ID_game: Int!
+  date: Date!
+  location: String!
+  time: String!
+  game_teams: [GameParticipant!]!
+}
+
+type GameParticipant {
+  ID_participation: Int!
+  ID_game: Int!
+  ID_team: Int!
+  team: TeamGame!
+  players: [GamePlayer!]!
+}
+
+type GamePlayer {
+  ID_game_player: Int!
+  ID_player: Int!
+  ID_game: Int!
+  ID_team: Int!
+  player: Player!
+}
+
+type GameWithTeam {
+  ID_game: Int!
+  date: Date!
+  location: String!
+  time: String!
+  team: Team!
+}
+
+type GameDetails {
+  ID_game: Int!
+  date: Date!
+  location: String!
+  time: String!
+}
+
+type GamePlayerDetails {
+  ID_game_player: Int!
+  ID_player: Int!
+  ID_game: Int!
+  ID_team: Int!
+  game: GameDetails!
+  team: Team!
+}
