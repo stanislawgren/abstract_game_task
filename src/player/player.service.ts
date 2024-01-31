@@ -19,7 +19,15 @@ export class PlayerService {
     return await this.playersRepository.findOneBy({ ID_player: id });
   }
 
-  async findManyById(ids: number[]): Promise<(Player | any)[]> {
+  async findManyByPlayerId(ids: number[]): Promise<(Player | any)[]> {
+    const players = await this.playersRepository.find({
+      where: { ID_player: In(ids) },
+    });
+
+    return await players;
+  }
+
+  async findManyByTeamId(ids: number[]): Promise<(Player | any)[]> {
     const players = await this.playersRepository.find({
       where: { ID_team: In(ids) },
     });

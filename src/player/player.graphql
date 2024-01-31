@@ -1,6 +1,16 @@
 type Query {
   players: [Player!]!
   player(id: ID!): Player!
+  player_games(id: ID!): PlayerGames!
+}
+
+type PlayerGames {
+  ID_player: Int!
+  first_name: String!
+  last_name: String!
+  number: Int!
+  ID_team: Int!
+  games: [GamePlayerDetails!]!
 }
 
 type Player {
@@ -9,4 +19,5 @@ type Player {
   last_name: String!
   number: Int!
   ID_team: Int!
+  team: Team!
 }
