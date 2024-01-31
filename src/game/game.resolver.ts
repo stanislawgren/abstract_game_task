@@ -8,7 +8,7 @@ export class GameResolver {
   constructor(private readonly gameService: GameService) {}
 
   @Query('games')
-  async getGames(): Promise<(Game | any)[]> {
+  async getGames(): Promise<Game[]> {
     return await this.gameService.findAllGames();
   }
 

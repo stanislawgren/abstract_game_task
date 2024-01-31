@@ -19,10 +19,8 @@ export class TeamService {
   }
 
   async findManyById(ids: number[]): Promise<(Team | any)[]> {
-    const teams = await this.teamRepository.find({
+    return await this.teamRepository.find({
       where: { ID_team: In(ids) },
     });
-
-    return await teams;
   }
 }

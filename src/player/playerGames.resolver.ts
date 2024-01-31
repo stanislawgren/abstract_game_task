@@ -19,8 +19,6 @@ export class PlayerGamesResolver {
   async games(
     @Parent() player: PlayerGames & { ID_player: number },
   ): Promise<GamePlayer[]> {
-    const res = await this.gameService.findGameForPlayer(player.ID_player);
-
-    return res;
+    return await this.gameService.findGameForPlayer(player.ID_player);
   }
 }
