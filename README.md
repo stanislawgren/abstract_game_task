@@ -4,7 +4,7 @@
 
 Server: Nest.js
 
-Database: MySQL
+Database: MySQL (dump file in ```./db/abstract_game_dump.sql```)
 
 API: GraphQL
 
