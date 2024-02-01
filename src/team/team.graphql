@@ -1,6 +1,6 @@
 type Query {
   teams: [TeamPlayers!]!
-  team(id: ID!): TeamPlayers!
+  team(id: Int!): TeamPlayers!
 }
 
 type TeamPlayers implements TeamInterface {

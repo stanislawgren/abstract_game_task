@@ -32,12 +32,12 @@ export interface IQuery {
     games(): Game[] | Promise<Game[]>;
     game_participants(): GameParticipant[] | Promise<GameParticipant[]>;
     game_players(): GamePlayer[] | Promise<GamePlayer[]>;
-    game(id: string): Game | Promise<Game>;
+    game(id: number): Game | Promise<Game>;
     players(): Player[] | Promise<Player[]>;
-    player(id: string): Player | Promise<Player>;
-    player_games(id: string): PlayerGames | Promise<PlayerGames>;
+    player(id: number): Player | Promise<Player>;
+    player_games(id: number): PlayerGames | Promise<PlayerGames>;
     teams(): TeamPlayers[] | Promise<TeamPlayers[]>;
-    team(id: string): TeamPlayers | Promise<TeamPlayers>;
+    team(id: number): TeamPlayers | Promise<TeamPlayers>;
 }
 
 export interface Game extends GameInterface {

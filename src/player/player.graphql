@@ -1,7 +1,7 @@
 type Query {
   players: [Player!]!
-  player(id: ID!): Player!
-  player_games(id: ID!): PlayerGames!
+  player(id: Int!): Player!
+  player_games(id: Int!): PlayerGames!
 }
 
 type PlayerGames implements PlayerInterface {
