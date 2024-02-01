@@ -29,6 +29,18 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## .env file
+
+The file has been added to the repository. Below is the template with data from the file.
+
+```bash
+DB_PORT=3306
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=root
+DB_NAME=abstract_game
+```
+
 ## Task Solution
 
 1. lista meczów
