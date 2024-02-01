@@ -1,5 +1,5 @@
 import { Resolver, ResolveField, Parent } from '@nestjs/graphql';
-import { GameParticipant, GamePlayer, TeamGame } from 'src/graphql';
+import { GameParticipant, TeamGame, GamePlayer } from 'src/graphql';
 import { DataloaderService } from 'src/dataloader/dataloader.service';
 
 @Resolver('GameParticipant')

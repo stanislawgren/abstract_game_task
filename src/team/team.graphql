@@ -1,21 +1,26 @@
 type Query {
   teams: [TeamPlayers!]!
-  team(id: ID!): TeamPlayers!
+  team(id: Int!): TeamPlayers!
 }
 
-type TeamPlayers {
+type TeamPlayers implements TeamInterface {
   ID_team: Int!
   name: String!
-  players: [Player]
+  players: [PlayerDetails]
 }
 
-type TeamGame {
+type TeamGame implements TeamInterface {
   ID_team: Int!
   name: String!
   players: [GamePlayer!]!
 }
 
-type Team {
+type Team implements TeamInterface {
+  ID_team: Int!
+  name: String!
+}
+
+interface TeamInterface {
   ID_team: Int!
   name: String!
 }

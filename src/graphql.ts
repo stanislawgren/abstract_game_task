@@ -8,19 +8,39 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export interface GameInterface {
+    ID_game: number;
+    date: Date;
+    location: string;
+    time: string;
+}
+
+export interface PlayerInterface {
+    ID_player: number;
+    first_name: string;
+    last_name: string;
+    number: number;
+    ID_team: number;
+}
+
+export interface TeamInterface {
+    ID_team: number;
+    name: string;
+}
+
 export interface IQuery {
     games(): Game[] | Promise<Game[]>;
     game_participants(): GameParticipant[] | Promise<GameParticipant[]>;
     game_players(): GamePlayer[] | Promise<GamePlayer[]>;
-    game(id: string): Game | Promise<Game>;
+    game(id: number): Game | Promise<Game>;
     players(): Player[] | Promise<Player[]>;
-    player(id: string): Player | Promise<Player>;
-    player_games(id: string): PlayerGames | Promise<PlayerGames>;
+    player(id: number): Player | Promise<Player>;
+    player_games(id: number): PlayerGames | Promise<PlayerGames>;
     teams(): TeamPlayers[] | Promise<TeamPlayers[]>;
-    team(id: string): TeamPlayers | Promise<TeamPlayers>;
+    team(id: number): TeamPlayers | Promise<TeamPlayers>;
 }
 
-export interface Game {
+export interface Game extends GameInterface {
     ID_game: number;
     date: Date;
     location: string;
@@ -44,15 +64,7 @@ export interface GamePlayer {
     player: Player;
 }
 
-export interface GameWithTeam {
-    ID_game: number;
-    date: Date;
-    location: string;
-    time: string;
-    team: Team;
-}
-
-export interface GameDetails {
+export interface GameDetails extends GameInterface {
     ID_game: number;
     date: Date;
     location: string;
@@ -68,7 +80,7 @@ export interface GamePlayerDetails {
     team: Team;
 }
 
-export interface PlayerGames {
+export interface PlayerGames extends PlayerInterface {
     ID_player: number;
     first_name: string;
     last_name: string;
@@ -77,7 +89,15 @@ export interface PlayerGames {
     games: GamePlayerDetails[];
 }
 
-export interface Player {
+export interface PlayerDetails extends PlayerInterface {
+    ID_player: number;
+    first_name: string;
+    last_name: string;
+    number: number;
+    ID_team: number;
+}
+
+export interface Player extends PlayerInterface {
     ID_player: number;
     first_name: string;
     last_name: string;
@@ -86,19 +106,19 @@ export interface Player {
     team: Team;
 }
 
-export interface TeamPlayers {
+export interface TeamPlayers extends TeamInterface {
     ID_team: number;
     name: string;
-    players?: Nullable<Nullable<Player>[]>;
+    players?: Nullable<Nullable<PlayerDetails>[]>;
 }
 
-export interface TeamGame {
+export interface TeamGame extends TeamInterface {
     ID_team: number;
     name: string;
     players: GamePlayer[];
 }
 
-export interface Team {
+export interface Team extends TeamInterface {
     ID_team: number;
     name: string;
 }

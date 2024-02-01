@@ -26,8 +26,6 @@ export class TeamResolver {
   async players(
     @Parent() team: TeamPlayers & { ID_team: number },
   ): Promise<Player> {
-    const res = await this.loaders.playersLoader.load(team.ID_team);
-
-    return res;
+    return await this.loaders.playersLoader.load(team.ID_team);
   }
 }

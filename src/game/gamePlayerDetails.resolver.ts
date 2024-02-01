@@ -12,17 +12,13 @@ export class GamePlayerDetailsResolver {
   async team(
     @Parent() playerGames: PlayerGames & { ID_team: number },
   ): Promise<TeamGame> {
-    const chk = await this.loaders.teamsLoader.load(playerGames.ID_team);
-
-    return await chk;
+    return await this.loaders.teamsLoader.load(playerGames.ID_team);
   }
 
   @ResolveField('game')
   async game(
     @Parent() playerGames: PlayerGames & { ID_game: number },
-  ): Promise<GameDetails | any> {
-    const chk = await this.loaders.gameDetailsLoader.load(playerGames.ID_game);
-
-    return await chk;
+  ): Promise<GameDetails> {
+    return await this.loaders.gameDetailsLoader.load(playerGames.ID_game);
   }
 }

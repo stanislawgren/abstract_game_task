@@ -19,7 +19,7 @@ export class GameService {
     private readonly gamePlayersRepository: Repository<GamePlayer>,
   ) {}
 
-  async findAllGames(): Promise<Games[]> {
+  async findAllGames(): Promise<Game[]> {
     return await this.gamesRepository.find();
   }
 
@@ -45,7 +45,7 @@ export class GameService {
     return await this.gamePlayersRepository.find({ where: { ID_team: id } });
   }
 
-  async findGamePlayersForGame(ids: number[]): Promise<(GamePlayer | any)[]> {
+  async findGamePlayersForGame(ids: number[]): Promise<GamePlayer[][]> {
     const gamePlayers = await this.gamePlayersRepository.find({
       where: { ID_game: In(ids) },
     });
@@ -64,11 +64,9 @@ export class GameService {
     return await this.gamePlayersRepository.find({ where: { ID_player: id } });
   }
 
-  async findGamesDetails(ids: number[]): Promise<(Game | any)[]> {
-    const games = await this.gamesRepository.find({
+  async findGamesDetails(ids: number[]): Promise<Game[]> {
+    return await this.gamesRepository.find({
       where: { ID_game: In(ids) },
     });
-
-    return await games;
   }
 }

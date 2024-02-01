@@ -1,6 +1,5 @@
 import { Args, Query, Resolver, ResolveField, Parent } from '@nestjs/graphql';
 import { PlayerService } from './player.service';
-import { Players } from './player.entity';
 import { Player, Team } from 'src/graphql';
 import { TeamService } from 'src/team/team.service';
 
@@ -12,12 +11,12 @@ export class PlayerResolver {
   ) {}
 
   @Query('players')
-  async getPlayers(): Promise<Players[]> {
+  async getPlayers(): Promise<Player[]> {
     return await this.playerService.findAll();
   }
 
   @Query('player')
-  async getPlayer(@Args('id') id: number): Promise<Players> {
+  async getPlayer(@Args('id') id: number): Promise<Player> {
     return await this.playerService.findOneById(id);
   }
 
