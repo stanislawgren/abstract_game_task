@@ -4,10 +4,10 @@ type Query {
   games: [Game!]!
   game_participants: [GameParticipant!]!
   game_players: [GamePlayer!]!
-  game(id: ID!): Game!
+  game(id: Int!): Game!
 }
 
-type Game {
+type Game implements GameInterface {
   ID_game: Int!
   date: Date!
   location: String!
@@ -31,15 +31,7 @@ type GamePlayer {
   player: Player!
 }
 
-type GameWithTeam {
-  ID_game: Int!
-  date: Date!
-  location: String!
-  time: String!
-  team: Team!
-}
-
-type GameDetails {
+type GameDetails implements GameInterface {
   ID_game: Int!
   date: Date!
   location: String!
@@ -53,4 +45,11 @@ type GamePlayerDetails {
   ID_team: Int!
   game: GameDetails!
   team: Team!
+}
+
+interface GameInterface {
+  ID_game: Int!
+  date: Date!
+  location: String!
+  time: String!
 }

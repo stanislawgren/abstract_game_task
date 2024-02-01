@@ -1,10 +1,10 @@
 type Query {
   players: [Player!]!
-  player(id: ID!): Player!
-  player_games(id: ID!): PlayerGames!
+  player(id: Int!): Player!
+  player_games(id: Int!): PlayerGames!
 }
 
-type PlayerGames {
+type PlayerGames implements PlayerInterface {
   ID_player: Int!
   first_name: String!
   last_name: String!
@@ -13,11 +13,27 @@ type PlayerGames {
   games: [GamePlayerDetails!]!
 }
 
-type Player {
+type PlayerDetails implements PlayerInterface {
+  ID_player: Int!
+  first_name: String!
+  last_name: String!
+  number: Int!
+  ID_team: Int!
+}
+
+type Player implements PlayerInterface {
   ID_player: Int!
   first_name: String!
   last_name: String!
   number: Int!
   ID_team: Int!
   team: Team!
+}
+
+interface PlayerInterface {
+  ID_player: Int!
+  first_name: String!
+  last_name: String!
+  number: Int!
+  ID_team: Int!
 }
